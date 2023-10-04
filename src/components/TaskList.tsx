@@ -5,24 +5,18 @@ import {colors, displays, fonts} from '../styles/styles';
 //components
 import Task from './Task';
 //types
-import {TaskType} from '../types/types';
-
-interface TaskListProps {
-  tasks: TaskType[];
-  setTasks: React.Dispatch<React.SetStateAction<TaskType[]>>;
-  taskCount: number;
-  setTaskCount: React.Dispatch<React.SetStateAction<number>>;
-}
+import {TaskListProps} from '../types/types';
 const TaskList: React.FC<TaskListProps> = ({
   tasks,
   setTasks,
   taskCount,
   setTaskCount,
 }) => {
+  //Below : we create a function to remove tasks
   const deleteTask = (id: number) => {
     const newTasks = tasks.filter(task => task.id !== id);
-    setTasks(newTasks);
-    setTaskCount(taskCount - 1);
+    setTasks(newTasks); //we init our array of tasks
+    setTaskCount(taskCount - 1); //we remove 1 of the total
   };
   return (
     <View
@@ -39,6 +33,7 @@ const TaskList: React.FC<TaskListProps> = ({
           ? `${taskCount} tâche en cours`
           : `${taskCount} tâches en cours`}
       </Text>
+      {/* Below : We can create a virtualized scrolling list to display every tasks */}
       <FlatList
         data={tasks}
         showsVerticalScrollIndicator={true}
