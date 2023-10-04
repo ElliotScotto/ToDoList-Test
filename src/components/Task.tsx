@@ -1,17 +1,15 @@
 import React, {useState} from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
+import {Text, TouchableOpacity, View, TextInput} from 'react-native';
 import {colors, displays, fonts} from '../styles/styles';
-interface TaskType {
-  id: number;
-  title: string;
-}
+import {TaskType} from '../types/types';
+
 interface TaskProps {
   data: TaskType;
   onDelete: (id: number) => void;
-  taskCount: number;
 }
-const Task: React.FC<TaskProps> = ({data, onDelete, taskCount}) => {
+const Task: React.FC<TaskProps> = ({data, onDelete}) => {
   const [task1, setTask1] = useState(false);
+  const [taskTitle, setTaskTitle] = useState(data.title);
   return (
     <View
       style={[
@@ -29,19 +27,26 @@ const Task: React.FC<TaskProps> = ({data, onDelete, taskCount}) => {
         },
       ]}>
       <TouchableOpacity onPress={() => onDelete(data.id)}>
-        <Text style={[fonts.primary, {color: colors.darkAirwell}]}>X</Text>
+        <Text
+          style={[fonts.primary, {color: colors.darkAirwell, marginRight: 10}]}>
+          X
+        </Text>
       </TouchableOpacity>
       <View style={[displays.aliC, displays.flex]}>
-        <Text style={[fonts.primary, {color: colors.darkAirwell}]}>
-          Tâche n°{data.id + 1}
-        </Text>
+        <TextInput
+          value={taskTitle}
+          onChangeText={setTaskTitle}
+          style={[
+            {width: '100%', borderColor: colors.airwellBlue, borderWidth: 1},
+          ]}
+        />
       </View>
       <TouchableOpacity
         onPress={() => {
           setTask1(!task1);
         }}
         style={{
-          marginLeft: 20,
+          marginLeft: 10,
           backgroundColor: task1 ? colors.airwellBlue : colors.white,
           borderColor: colors.airwellBlue,
           borderWidth: 2,

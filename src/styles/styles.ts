@@ -32,6 +32,9 @@ const displays = StyleSheet.create({
   bord3: {borderWidth: 1, borderColor: 'green'},
   bord4: {borderWidth: 1, borderColor: 'blue'},
   bord5: {borderWidth: 1, borderColor: 'goldenrod'},
+  alwaysVisibleVerticalIndicator: {
+    opacity: 1,
+  },
   // Below : default react-native style
   sectionContainer: {
     marginTop: 32,

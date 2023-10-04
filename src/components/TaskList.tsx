@@ -4,11 +4,8 @@ import {Text, View, FlatList} from 'react-native';
 import {colors, displays, fonts} from '../styles/styles';
 //components
 import Task from './Task';
-
-interface TaskType {
-  id: number;
-  title: string;
-}
+//types
+import {TaskType} from '../types/types';
 
 interface TaskListProps {
   tasks: TaskType[];
@@ -31,7 +28,6 @@ const TaskList: React.FC<TaskListProps> = ({
     <View
       style={[
         displays.aliC,
-        displays.bord5,
         {justifyContent: 'flex-start', paddingTop: 50, flex: 4},
       ]}>
       <Text style={[fonts.mainTitle, {color: colors.airwellBlue}]}>
@@ -45,11 +41,14 @@ const TaskList: React.FC<TaskListProps> = ({
       </Text>
       <FlatList
         data={tasks}
+        showsVerticalScrollIndicator={true}
+        persistentScrollbar={true}
+        style={displays.alwaysVisibleVerticalIndicator}
         keyExtractor={item => item.id.toString()}
         renderItem={({item, index}) => {
           return (
             <View key={item.id}>
-              <Task data={item} onDelete={deleteTask} taskCount={taskCount} />
+              <Task data={item} onDelete={deleteTask} />
             </View>
           );
         }}
