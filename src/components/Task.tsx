@@ -1,16 +1,17 @@
 import React, {useState} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import {colors, displays, fonts} from '../styles/styles';
-
-const Task: React.FC = () => {
+interface TaskType {
+  id: number;
+  title: string;
+}
+interface TaskProps {
+  data: TaskType;
+  onDelete: (id: number) => void;
+  taskCount: number;
+}
+const Task: React.FC<TaskProps> = ({data, onDelete, taskCount}) => {
   const [task1, setTask1] = useState(false);
-  const [task2, setTask2] = useState(false);
-  const [task3, setTask3] = useState(false);
-  const [task4, setTask4] = useState(false);
-  const [task5, setTask5] = useState(false);
-  {
-    console.log(task1);
-  }
   return (
     <View
       style={[
@@ -27,9 +28,12 @@ const Task: React.FC = () => {
           backgroundColor: colors.white,
         },
       ]}>
+      <TouchableOpacity onPress={() => onDelete(data.id)}>
+        <Text style={[fonts.primary, {color: colors.darkAirwell}]}>X</Text>
+      </TouchableOpacity>
       <View style={[displays.aliC, displays.flex]}>
         <Text style={[fonts.primary, {color: colors.darkAirwell}]}>
-          Tâche n°1
+          Tâche n°{data.id + 1}
         </Text>
       </View>
       <TouchableOpacity

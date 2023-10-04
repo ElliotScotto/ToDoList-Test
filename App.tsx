@@ -5,7 +5,7 @@
  * @format
  */
 
-import React from 'react';
+import React, {useState} from 'react';
 import type {PropsWithChildren} from 'react';
 // //components
 import TaskList from './src/components/TaskList';
@@ -13,7 +13,6 @@ import TaskList from './src/components/TaskList';
 import {displays} from './src/styles/styles';
 import {
   SafeAreaView,
-  ScrollView,
   StatusBar,
   StyleSheet,
   Text,
@@ -28,6 +27,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import AddTask from './src/components/AddTask';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -58,18 +58,34 @@ function Section({children, title}: SectionProps): JSX.Element {
     </View>
   );
 }
+interface TaskType {
+  id: number;
+  title: string;
+}
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
-
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
-
+  const [tasks, setTasks] = useState<TaskType[]>([]);
+  const [taskCount, setTaskCount] = useState<number>(0);
+  console.log('taskCount : ', taskCount);
   return (
     <SafeAreaView style={[displays.white, displays.flex, displays.bord1]}>
       <StatusBar barStyle="default" />
-      <TaskList />
+      <TaskList
+        tasks={tasks}
+        setTasks={setTasks}
+        taskCount={taskCount}
+        setTaskCount={setTaskCount}
+      />
+      <AddTask
+        tasks={tasks}
+        setTasks={setTasks}
+        taskCount={taskCount}
+        setTaskCount={setTaskCount}
+      />
     </SafeAreaView>
   );
 }
