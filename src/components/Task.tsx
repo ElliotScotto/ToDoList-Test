@@ -4,7 +4,7 @@ import {colors, displays, fonts} from '../styles/styles';
 import {TaskProps} from '../types/types';
 
 const Task: React.FC<TaskProps> = ({data, onDelete}) => {
-  const [task1, setTask1] = useState(false); // we check or uncheck each task
+  const [check, setCheck] = useState(false); // we check or uncheck each task
   const [taskTitle, setTaskTitle] = useState(data.title); //
   return (
     <View style={displays.taskContainer}>
@@ -25,13 +25,13 @@ const Task: React.FC<TaskProps> = ({data, onDelete}) => {
       </View>
       <TouchableOpacity
         onPress={() => {
-          setTask1(!task1);
+          setCheck(!check);
         }}
         style={[
           displays.check,
-          {backgroundColor: task1 ? colors.airwellBlue : colors.white},
+          {backgroundColor: check ? colors.airwellBlue : colors.white},
         ]}>
-        {task1 ? <Text style={{color: colors.lightAirwell}}>✔︎</Text> : null}
+        {check ? <Text style={{color: colors.lightAirwell}}>✔︎</Text> : null}
       </TouchableOpacity>
     </View>
   );
