@@ -36,10 +36,10 @@ type SectionProps = PropsWithChildren<{
 function Section({children, title}: SectionProps): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
   return (
-    <View style={styles.sectionContainer}>
+    <View style={displays.sectionContainer}>
       <Text
         style={[
-          styles.sectionTitle,
+          displays.sectionTitle,
           {
             color: isDarkMode ? Colors.white : Colors.black,
           },
@@ -48,7 +48,7 @@ function Section({children, title}: SectionProps): JSX.Element {
       </Text>
       <Text
         style={[
-          styles.sectionDescription,
+          displays.sectionDescription,
           {
             color: isDarkMode ? Colors.light : Colors.dark,
           },
@@ -72,7 +72,7 @@ function App(): JSX.Element {
   const [taskCount, setTaskCount] = useState<number>(0);
   console.log('taskCount : ', taskCount);
   return (
-    <SafeAreaView style={[displays.white, displays.flex, displays.bord1]}>
+    <SafeAreaView style={[displays.white, displays.flex]}>
       <StatusBar barStyle="default" />
       <TaskList
         tasks={tasks}

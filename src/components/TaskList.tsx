@@ -30,9 +30,9 @@ const TaskList: React.FC<TaskListProps> = ({
   return (
     <View
       style={[
-        displays.bord2,
         displays.aliC,
-        {justifyContent: 'flex-start', paddingTop: 50},
+        displays.bord5,
+        {justifyContent: 'flex-start', paddingTop: 50, flex: 4},
       ]}>
       <Text style={[fonts.mainTitle, {color: colors.airwellBlue}]}>
         Liste de tâches
@@ -46,9 +46,11 @@ const TaskList: React.FC<TaskListProps> = ({
       <FlatList
         data={tasks}
         keyExtractor={item => item.id.toString()}
-        renderItem={({item}) => {
+        renderItem={({item, index}) => {
           return (
-            <Task data={item} onDelete={deleteTask} taskCount={taskCount} />
+            <View key={item.id}>
+              <Task data={item} onDelete={deleteTask} taskCount={taskCount} />
+            </View>
           );
         }}
       />

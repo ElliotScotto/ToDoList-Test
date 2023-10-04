@@ -1,6 +1,5 @@
 import {StyleSheet, Dimensions} from 'react-native';
 const widthScreen = Dimensions.get('window').width;
-//colors
 const colors = {
   airwellBlue: '#115691',
   lightAirwell: '#ECF6FF',
@@ -9,7 +8,6 @@ const colors = {
   white: '#ffffff',
 };
 const fonts = StyleSheet.create({
-  //style
   mainTitle: {fontSize: 20, fontWeight: '500', letterSpacing: 0.4},
   primary: {fontSize: 18, fontWeight: '500'},
   secondary: {fontSize: 16, fontWeight: '500'},
@@ -34,7 +32,7 @@ const displays = StyleSheet.create({
   bord3: {borderWidth: 1, borderColor: 'green'},
   bord4: {borderWidth: 1, borderColor: 'blue'},
   bord5: {borderWidth: 1, borderColor: 'goldenrod'},
-  // Below : default style react-native style
+  // Below : default react-native style
   sectionContainer: {
     marginTop: 32,
     paddingHorizontal: 24,

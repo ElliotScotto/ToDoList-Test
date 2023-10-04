@@ -24,12 +24,7 @@ const AddTask: React.FC<AddTaskProps> = ({
   };
   return (
     <View
-      style={[
-        displays.flex,
-        displays.aliC,
-        displays.flex,
-        {justifyContent: 'flex-start'},
-      ]}>
+      style={[displays.flex, displays.aliC, {justifyContent: 'flex-start'}]}>
       <TouchableOpacity
         style={[
           displays.aliC,
